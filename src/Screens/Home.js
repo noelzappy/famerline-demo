@@ -1,40 +1,27 @@
 import React from 'react';
-import {View, Button, StyleSheet, ScrollView} from 'react-native';
+import {View, StyleSheet, ScrollView, Image} from 'react-native';
+import Button from '../Components/Button';
+import styles from '../Styles/Common';
 
 export default function Home({navigation}) {
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <View style={styles.innerContainer}>
+    <ScrollView>
+      <View style={styles.container}>
+        <Image source={require('../Assets/cert.png')} style={styles.image} />
+
         <Button
           title="Form One"
           onPress={() => {
             navigation.navigate('FormOne');
           }}
-          color="#841584"
         />
-        <View style={styles.space} />
         <Button
           title="Form Two"
           onPress={() => {
             navigation.navigate('FormTwo');
           }}
-          color="#841584"
         />
       </View>
     </ScrollView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  innerContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  space: {
-    marginVertical: 10,
-  },
-});

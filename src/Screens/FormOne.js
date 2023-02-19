@@ -1,16 +1,22 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   View,
   Text,
-  StyleSheet,
   ScrollView,
   RefreshControl,
   Alert,
+  TextInput,
+  TouchableOpacity,
 } from 'react-native';
+import Button from '../Components/Button';
+import DropdownPicker from '../Components/Picker';
 import {useGetDataOneQuery} from '../Services/api';
+import styles from '../Styles/Common';
 
 export default function FormOne() {
   const {data, isLoading, error, isFetching, refetch} = useGetDataOneQuery();
+
+  const [response, setResponse] = useState({});
 
   useEffect(() => {
     if (error) {
@@ -20,29 +26,52 @@ export default function FormOne() {
 
   return (
     <ScrollView
-      contentContainerStyle={styles.container}
       refreshControl={
         <RefreshControl
           refreshing={isFetching || isLoading}
           onRefresh={refetch}
         />
       }>
-      {data && data.questions
-        ? data.questions.map((item, index) => {
-            return (
-              <View>
-                <Text>{item.title}</Text>
-              </View>
-            );
-          })
-        : null}
+      <View style={styles.container}>
+        {data && data.questions
+          ? data.questions.map((item, index) => {
+              return (
+                <View key={index} style={styles.formField}>
+                  <Text style={styles.label}>{item.title}</Text>
+                  {item.form_type === 'EDIT_TEXT' && (
+                    <View style={styles.fieldContainer}>
+                      <TextInput
+                        style={styles.textInput}
+                        placeholder={`Enter ${item.title}`}
+                        placeholderTextColor="gray"
+                        onChangeText={value => {
+                          setResponse({...response, [item.id]: value});
+                        }}
+                      />
+                    </View>
+                  )}
+
+                  {item.form_type === 'RADIO_BUTTONS' && (
+                    <View>
+                      <DropdownPicker
+                        items={item.radio_button_option}
+                        label={item.title}
+                        defaultValue={item.defaultAnswer}
+                        onValueChange={value => {
+                          setResponse({...response, [item.id]: value});
+                        }}
+                      />
+                    </View>
+                  )}
+                </View>
+              );
+            })
+          : null}
+
+        {data && (
+          <Button title="Submit" onPress={() => console.log(response)} />
+        )}
+      </View>
     </ScrollView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: 'blue',
-    flex: 1,
-  },
-});
