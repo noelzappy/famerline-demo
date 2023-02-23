@@ -1,11 +1,9 @@
 # Famerline-demo
 The Famerline demo app
 
-This is a proof of concept app and does not any real logic.
+This is a proof of concept app and does not have any real logic.
 It's created using the React Native Framework and optimized for the Anroid OS.
 It will work perfectly on iOS devices too.
-Please refer to the screenshots below for UI demonstration.
-
 
 # UI
 <div>
