@@ -13,6 +13,12 @@ It will work perfectly on iOS devices too.
    <img src="https://user-images.githubusercontent.com/38583057/220949731-9d2f3ae7-6ac7-4f8b-a072-7d72d8ebebf6.jpeg" style="width:200px" />
 </div>
 
+
+# APK
+Download the Installable APK here
+ ### [Download Link](https://drive.google.com/file/d/1iDtuv-LHoovJxmQmu4Lj6cy6YnELpun4/view?usp=share_link)
+
+
 # Libraries
 - Redux (redux persist, redux-toolkit, react-redux)
 - ReactJs
