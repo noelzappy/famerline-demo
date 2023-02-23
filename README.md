@@ -5,6 +5,9 @@ This is a proof of concept app and does not any real logic.
 It's created using the React Native Framework and optimized for the Anroid OS.
 It will work perfectly on iOS devices too.
 Please refer to the screenshots below for UI demonstration.
+
+
+
 ![WhatsApp Image 2023-02-23 at 15 17 55](https://user-images.githubusercontent.com/38583057/220949766-3862b74f-2fac-423c-9e8f-5daabacd2761.jpeg)
 
 
